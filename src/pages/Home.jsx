@@ -36,8 +36,6 @@ const Home = () => {
 
             var newData = response.data;
 
-            console.log(newData);
-
             const labels = [];
             const taskCounts = [];
             const today = new Date();
@@ -50,8 +48,6 @@ const Home = () => {
                 taskCounts.push(0); // Initialize with 0
             }
 
-            console.log(taskCounts);
-
             response.data.data.tasks_created_last_30_days.forEach(task => {
                 const taskDate = new Date(task.createdAt).toISOString().slice(0, 10);
                 const index = labels.indexOf(taskDate);
@@ -59,8 +55,6 @@ const Home = () => {
                     taskCounts[index]++;
                 }
             });
-
-            console.log(taskCounts);
 
             newData["tasks_created_last_30_days"] = {
                 labels,
@@ -72,8 +66,6 @@ const Home = () => {
                     },
                 ],
             };
-
-            console.log(newData);
 
             setData(newData);
             setLoading(false);
